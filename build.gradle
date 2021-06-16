@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+}
+
+group 'uk.oskarpll'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url('https://repo.aikar.co/nexus/content/groups/aikar/')
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    compile "org.jetbrains.kotlin:kotlin-reflect:1.3.0"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
+
+    compileOnly "com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT"
+    compileOnly("com.destroystokyo.paper:paper:1.16.5-R0.1-SNAPSHOT") {
+        exclude group: 'io.papermc', module: 'minecraft-server'
+    }
+    compile("club.minnced:discord-webhooks:0.5.7")
+}
+
+jar {
+    from {
+        configurations.compile.collect
+                { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    baseName = "${project.name}"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+
+tasks.withType(Jar) {
+    destinationDir = file("$rootDir/jars/")
+}

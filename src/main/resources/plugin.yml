@@ -1,0 +1,4 @@
+name: MinecraftChat
+version: 0.0.1
+author: oskarPLL
+main: uk.oskarpll.minecraftchat.ChatPlugin
