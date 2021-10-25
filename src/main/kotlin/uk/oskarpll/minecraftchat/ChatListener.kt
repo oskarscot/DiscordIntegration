@@ -7,11 +7,12 @@ import org.bukkit.event.player.AsyncPlayerChatEvent
 
 class ChatListener(private val plugin: ChatPlugin) : Listener {
 
+    private val builder = WebhookMessageBuilder()
+    
     @EventHandler
     fun onChat(event: AsyncPlayerChatEvent){
         if(event.message.startsWith("/")) return
         if(event.message.contains("@everyone") || event.message.contains("@here")) return
-        val builder = WebhookMessageBuilder()
         builder.setUsername(event.player.name)
         builder.setAvatarUrl("https://crafatar.com/avatars/${event.player.uniqueId}?default=MHF_Steve")
         builder.setContent(event.message)
