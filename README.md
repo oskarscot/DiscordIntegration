@@ -1,14 +1,14 @@
 # Minecraft Chat
 
-Simple Discord <-> Minecraft chat integration using webhooks
+Simple Minecraft -> Discord chat integration using webhooks
 
-## Instalacja
+## Installing
 
-Plugin należy wrzucić do folderu ```plugins``` oraz ustawić ```URL``` webhook'a w ```config.json```
+Put the plugin into the  ```plugins``` folder and set the webhook ```URL``` in ```config.json```
 
 ![](https://i.imgur.com/mmooshg.png)
 
-## Użycie
+## Showcase
 
 ![](https://i.imgur.com/tsnGVci.png)
 
