@@ -12,6 +12,7 @@ class ChatListener(private val plugin: ChatPlugin) : Listener {
     @EventHandler
     fun onChat(event: AsyncPlayerChatEvent){
         if(event.message.startsWith("/")) return
+        if(event.message.contains("@everyone") || event.message.contains("@here")) return
         if(event.message.contains(DiscordRegex.USER_MENTION.toRegex()) || event.message.contains(DiscordRegex.ROLE_MENTION.toRegex())) return
         builder.setUsername(event.player.name)
         builder.setAvatarUrl("https://crafatar.com/avatars/${event.player.uniqueId}?default=MHF_Steve")
